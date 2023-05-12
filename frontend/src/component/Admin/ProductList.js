@@ -43,7 +43,7 @@ const ProductList = ({ history }) => {
     }
 
     if (isDeleted) {
-      alert.success("Product Deleted Successfully");
+      alert.success("Dog Deleted Successfully");
       history.push("/admin/products");
       dispatch({ type: DELETE_PRODUCT_RESET });
     }
@@ -62,7 +62,7 @@ const ProductList = ({ history }) => {
     },
     {
       field: "stock",
-      headerName: "Stock",
+      headerName: "Status",
       type: "number",
       minWidth: 150,
       flex: 0.3,
@@ -70,7 +70,7 @@ const ProductList = ({ history }) => {
 
     {
       field: "price",
-      headerName: "Price",
+      headerName: "Age",
       type: "number",
       minWidth: 270,
       flex: 0.5,

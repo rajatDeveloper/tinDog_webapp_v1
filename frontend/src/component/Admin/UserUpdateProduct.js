@@ -39,6 +39,7 @@ const UserUpdateProduct = ({ history, match }) => {
   const [images, setImages] = useState([]);
   const [oldImages, setOldImages] = useState([]);
   const [imagesPreview, setImagesPreview] = useState([]);
+  const [loc, setLoc] = useState("");
 
   const categories = [
     "Labrador Retriever",
@@ -48,6 +49,17 @@ const UserUpdateProduct = ({ history, match }) => {
     "Siberian Husky",
   ];
 
+  const locList = [
+    "Kaithal",
+    "Delhi",
+    "Nodia",
+    "Gurugram",
+    "Karnal",
+    "Panipat",
+    "Ambala",
+    "Kurukshetra",
+    "Jhajjar",
+  ];
   const productId = match.params.id;
 
   useEffect(() => {
@@ -62,6 +74,7 @@ const UserUpdateProduct = ({ history, match }) => {
       setOldImages(product.images);
       setEmail(product.email);
       setGender(product.gender);
+      setLoc(product.loc);
     }
     if (error) {
       alert.error(error);
@@ -74,7 +87,7 @@ const UserUpdateProduct = ({ history, match }) => {
     }
 
     if (isUpdated) {
-      alert.success("Product Updated Successfully");
+      alert.success("Dog Updated Successfully");
       history.push("/account");
       dispatch({ type: UPDATE_PRODUCT_RESET });
     }
@@ -101,6 +114,7 @@ const UserUpdateProduct = ({ history, match }) => {
     myForm.set("Stock", Stock);
     myForm.set("gender", gender);
     myForm.set("email", email);
+    myForm.set("loc", loc);
 
     images.forEach((image) => {
       myForm.append("images", image);
@@ -153,7 +167,8 @@ const UserUpdateProduct = ({ history, match }) => {
               />
             </div>
             <div>
-              <AttachMoneyIcon />
+              <DescriptionIcon />
+
               <input
                 type="number"
                 placeholder="Age"
@@ -222,7 +237,17 @@ const UserUpdateProduct = ({ history, match }) => {
                 value={Stock}
               />
             </div>
-
+            <div>
+              <AccountTreeIcon />
+              <select value={loc} onChange={(e) => setLoc(e.target.value)}>
+                <option>Choose Location</option>
+                {locList.map((cate) => (
+                  <option key={cate} value={cate}>
+                    {cate}
+                  </option>
+                ))}
+              </select>
+            </div>
             <div id="createProductFormFile">
               <input
                 type="file"

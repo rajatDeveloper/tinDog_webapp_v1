@@ -29,11 +29,11 @@ const About = () => {
             </Button>
             <span>
               This is a sample wesbite made by @rajat_dhiman._ Only with the
-              purpose to understand the concepts MERN Stack !
+              purpose to understand the concepts of MERN!
             </span>
           </div>
           <div className="aboutSectionContainer2">
-            <Typography component="h2">Our Brands</Typography>
+            <Typography component="h2">Follow Us</Typography>
             <a href="https://www.facebook.com/rajat.dhiman.3000" target="blank">
               <FacebookIcon className="youtubeSvgIcon" />
             </a>

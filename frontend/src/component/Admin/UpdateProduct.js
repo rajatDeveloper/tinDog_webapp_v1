@@ -38,6 +38,7 @@ const UpdateProduct = ({ history, match }) => {
   const [images, setImages] = useState([]);
   const [oldImages, setOldImages] = useState([]);
   const [imagesPreview, setImagesPreview] = useState([]);
+  const [loc, setLoc] = useState("");
 
   const categories = [
     "Labrador Retriever",
@@ -45,6 +46,17 @@ const UpdateProduct = ({ history, match }) => {
     "Golden Retriever",
     "Bulldog",
     "Siberian Husky",
+  ];
+  const locList = [
+    "Kaithal",
+    "Delhi",
+    "Nodia",
+    "Gurugram",
+    "Karnal",
+    "Panipat",
+    "Ambala",
+    "Kurukshetra",
+    "Jhajjar",
   ];
 
   const productId = match.params.id;
@@ -61,6 +73,7 @@ const UpdateProduct = ({ history, match }) => {
       setOldImages(product.images);
       setGender(product.gender);
       setEmail(product.email);
+      setLoc(product.loc);
     }
     if (error) {
       alert.error(error);
@@ -73,7 +86,7 @@ const UpdateProduct = ({ history, match }) => {
     }
 
     if (isUpdated) {
-      alert.success("Product Updated Successfully");
+      alert.success("Dog Updated Successfully");
       history.push("/account");
       dispatch({ type: UPDATE_PRODUCT_RESET });
     }
@@ -100,6 +113,7 @@ const UpdateProduct = ({ history, match }) => {
     myForm.set("Stock", Stock);
     myForm.set("gender", gender);
     myForm.set("email", email);
+    myForm.set("loc", loc);
 
     images.forEach((image) => {
       myForm.append("images", image);
@@ -152,7 +166,8 @@ const UpdateProduct = ({ history, match }) => {
               />
             </div>
             <div>
-              <AttachMoneyIcon />
+            <DescriptionIcon />
+
               <input
                 type="number"
                 placeholder="Age"
@@ -221,6 +236,17 @@ const UpdateProduct = ({ history, match }) => {
                 onChange={(e) => setStock(e.target.value)}
                 value={Stock}
               />
+            </div>
+            <div>
+              <AccountTreeIcon />
+              <select value={loc} onChange={(e) => setLoc(e.target.value)}>
+                <option>Choose Location</option>
+                {locList.map((cate) => (
+                  <option key={cate} value={cate}>
+                    {cate}
+                  </option>
+                ))}
+              </select>
             </div>
 
             <div id="createProductFormFile">

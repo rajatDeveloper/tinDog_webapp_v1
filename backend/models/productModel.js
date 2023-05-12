@@ -1,5 +1,6 @@
 // const { default: mongoose } = require("mongoose");
 const mongoose = require("mongoose");
+
 const productSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -21,6 +22,10 @@ const productSchema = new mongoose.Schema({
     default: 0,
   },
   gender: {
+    type: String,
+    requied: false,
+  },
+  loc: {
     type: String,
     requied: false,
   },

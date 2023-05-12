@@ -9,12 +9,34 @@ import Pagination from "react-js-pagination";
 import Slider from "@material-ui/core/Slider";
 import { useAlert } from "react-alert";
 import Typography from "@material-ui/core/Typography";
+
+// const ab = [
+// conuntry : {
+//   name , {
+//   }
+
+//   }
+
+// }
+// ]
+
 const categories = [
   "Labrador Retriever",
   "German Shepherd",
   "Golden Retriever",
   "Bulldog",
   "Siberian Husky",
+];
+const locList = [
+  "Kaithal",
+  "Delhi",
+  "Nodia",
+  "Gurugram",
+  "Karnal",
+  "Panipat",
+  "Ambala",
+  "Kurukshetra",
+  "Jhajjar",
 ];
 
 const Products = () => {
@@ -23,7 +45,7 @@ const Products = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [price, setPrice] = useState([0, 25000]);
   const [category, setCategory] = useState("");
-
+  const [loc, setLoc] = useState("");
   const [ratings, setRatings] = useState(0);
 
   var data = useSelector((state) => state.product);
@@ -49,8 +71,8 @@ const Products = () => {
       alert.error(error);
       dispatch(clearErrors());
     }
-    dispatch(getProduct(keyword, currentPage, price, category, ratings));
-  }, [dispatch, keyword, currentPage, price, category, ratings, alert, error]);
+    dispatch(getProduct(keyword, currentPage, price, category, ratings , loc));
+  }, [dispatch, keyword, currentPage, price, category, ratings, alert, error , loc]);
   // let count = filteredProductsCount;
   return (
     <Fragment>
@@ -88,6 +110,7 @@ const Products = () => {
                 </li>
               ))}
             </ul>
+
             <fieldset>
               <Typography component="legend">Feedback Above</Typography>
               <Slider
@@ -101,6 +124,18 @@ const Products = () => {
                 max={5}
               />
             </fieldset>
+            <Typography>Locations</Typography>
+            <ul className="categoryBox">
+              {locList.map((category) => (
+                <li
+                  className="category-link"
+                  key={category}
+                  onClick={() => setLoc(category)}
+                >
+                  {category}
+                </li>
+              ))}
+            </ul>
           </div>
 
           {resultPerPage < productsCount && (

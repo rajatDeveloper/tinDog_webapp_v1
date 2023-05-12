@@ -38,7 +38,14 @@ import {
 //   "proxy": "http://192.168.29.79:4000"
 
 export const getProduct =
-  (keyword = "", currentPage = 1, price = [0, 25000], category, ratings = 0) =>
+  (
+    keyword = "",
+    currentPage = 1,
+    price = [0, 25000],
+    category,
+    ratings = 0,
+    loc
+  ) =>
   async (dispatch) => {
     try {
       dispatch({
@@ -49,6 +56,9 @@ export const getProduct =
 
       if (category) {
         link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${category}&ratings[gte]=${ratings}`;
+      }
+      if (loc) {
+        link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&loc=${loc}&ratings[gte]=${ratings}`;
       }
 
       const { data } = await axios.get(link);

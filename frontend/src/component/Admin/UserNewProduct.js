@@ -22,6 +22,7 @@ const NewUserProduct = ({ history }) => {
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [loc, setLoc] = useState("");
   const [gender, setGender] = useState("");
   const [price, setPrice] = useState(0);
   const [description, setDescription] = useState("");
@@ -36,6 +37,18 @@ const NewUserProduct = ({ history }) => {
     "Golden Retriever",
     "Bulldog",
     "Siberian Husky",
+  ];
+
+  const locList = [
+    "Kaithal",
+    "Delhi",
+    "Nodia",
+    "Gurugram",
+    "Karnal",
+    "Panipat",
+    "Ambala",
+    "Kurukshetra",
+    "Jhajjar",
   ];
 
   useEffect(() => {
@@ -63,6 +76,7 @@ const NewUserProduct = ({ history }) => {
     myForm.set("Stock", Stock);
     myForm.set("gender", gender);
     myForm.set("email", email);
+    myForm.set("loc", loc);
 
     images.forEach((image) => {
       myForm.append("images", image);
@@ -114,7 +128,7 @@ const NewUserProduct = ({ history }) => {
               />
             </div>
             <div>
-              <AttachMoneyIcon />
+              <DescriptionIcon />
               <input
                 type="number"
                 placeholder="Age"
@@ -176,7 +190,17 @@ const NewUserProduct = ({ history }) => {
                 onChange={(e) => setStock(e.target.value)}
               />
             </div>
-
+            <div>
+              <AccountTreeIcon />
+              <select onChange={(e) => setLoc(e.target.value)}>
+                <option value="">Choose Location</option>
+                {locList.map((cate) => (
+                  <option key={cate} value={cate}>
+                    {cate}
+                  </option>
+                ))}
+              </select>
+            </div>
             <div id="createProductFormFile">
               <input
                 type="file"

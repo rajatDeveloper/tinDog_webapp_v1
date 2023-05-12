@@ -64,7 +64,7 @@ const MyProducts = ({ history }) => {
     },
     {
       field: "stock",
-      headerName: "Stock",
+      headerName: "Status",
       type: "number",
       minWidth: 150,
       flex: 0.3,
@@ -72,7 +72,7 @@ const MyProducts = ({ history }) => {
 
     {
       field: "price",
-      headerName: "Price",
+      headerName: "Age",
       type: "number",
       minWidth: 270,
       flex: 0.5,
@@ -119,7 +119,7 @@ const MyProducts = ({ history }) => {
 
   return (
     <Fragment>
-      <MetaData title={`ALL Dogs - Admin`} />
+      <MetaData title={`ALL Dogs `} />
 
       <div className="dashboard">
         <Sidebar2 />

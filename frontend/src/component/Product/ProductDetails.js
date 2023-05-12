@@ -133,6 +133,9 @@ const ProductDetails = () => {
                 <h2>
                   {product.name}---{product.gender}
                 </h2>
+                <h6>
+                  Location :{product.loc ? product.loc : "Not Specified!"}
+                </h6>
                 <p>Dog # {product._id}</p>
               </div>
 
